@@ -1,11 +1,19 @@
-const express = require('express');
-const router = express.Router();
-const userController = require('../controlers/controller.js');
-//yasmin?
-router.post('/', userController.createUser);
-router.get('/', userController.getAllUsers);
-router.get('/:id', userController.getUserById);
-router.patch('/:id', userController.updateUser);
-router.delete('/:id', userController.deleteUser);
+import express from 'express';
+import {
+    createUser,
+    getAllUsers,
+    getUserById,
+    updateUser,
+    deleteUser
+} from '../controlers/controller.js';
 
-module.exports = router;
+const router = express.Router();
+
+// Rotas CRUD
+router.post('/', createUser);
+router.get('/', getAllUsers);
+router.get('/:id', getUserById);
+router.patch('/:id', updateUser);
+router.delete('/:id', deleteUser);
+
+export default router;
